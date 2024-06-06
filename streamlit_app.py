@@ -4,7 +4,6 @@ import joblib
 import streamlit as st 
 from PIL import Image
 
-# model = joblib.load('classifier.joblib')
 
 image = Image.open('water.png')
 st.image(image.resize((1000, 300)))
