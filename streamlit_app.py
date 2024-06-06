@@ -9,7 +9,7 @@ from PIL import Image
 image = Image.open('water.jpg')
 st.image(image.resize((1000, 300)))
 
-def predict_note_authentication(ph, Hardness, Solids, Chloramines, Sulfate, Conductivity, Organic_carbon, Trihalomethanes, Turbidity):
+def predict_note_authentication(ph, hardness, Solids, Chloramines, Sulfate, Conductivity, Organic_carbon, Trihalomethanes, Turbidity):
     prediction = model.predict([[ph, Hardness, Solids, Chloramines, Sulfate, Conductivity, Organic_carbon, Trihalomethanes, Turbidity]])
     return prediction
 
