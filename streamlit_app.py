@@ -4,7 +4,7 @@ import streamlit as st
 from PIL import Image
 
 
-image = Image.open('water.png')
+image = Image.open('water.jpg')
 st.image(image.resize((1000, 300)))
 
 def predict_note_authentication(ph, Hardness, Solids, Chloramines, Sulfate, Conductivity, Organic_carbon, Trihalomethanes, Turbidity):
