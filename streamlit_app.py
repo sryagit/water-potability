@@ -1,8 +1,10 @@
 import numpy as np
 import pandas as pd
+import joblib
 import streamlit as st 
 from PIL import Image
 
+# model = joblib.load('classifier.joblib')
 
 image = Image.open('water.jpg')
 st.image(image.resize((1000, 300)))
@@ -32,9 +34,7 @@ def main():
 
     if st.button("About"):
         st.text("Classifier name : Random Forest")
-        st.text("Accuracy Score : 99.27")
-        st.text("SRM 3rd SEM Internship Project")
-        st.text("Built by Suraj R. Yadav")
+        st.text("Accuracy Score : 70.00")
 
 if __name__ == '__main__':
     main()
