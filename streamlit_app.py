@@ -9,7 +9,7 @@ from PIL import Image
 image = Image.open('water.jpg')
 st.image(image.resize((1000, 300)))
 
-def predict_note_authentication(ph, hardness, Solids, Chloramines, Sulfate, Conductivity, Organic_carbon, Trihalomethanes, Turbidity):
+def predict_water_potability(ph, hardness, Solids, Chloramines, Sulfate, Conductivity, Organic_carbon, Trihalomethanes, Turbidity):
     prediction = model.predict([[ph, Hardness, Solids, Chloramines, Sulfate, Conductivity, Organic_carbon, Trihalomethanes, Turbidity]])
     return prediction
 
@@ -27,7 +27,7 @@ def main():
     Turbidity		= st.text_input("Turbidity", placeholder="Type Here")
 
     if st.button("Get Prediction"):
-        output = predict_note_authentication(ph, Hardness, Solids, Chloramines, Sulfate, Conductivity, Organic_carbon, Trihalomethanes, Turbidity)
+        output = predict_water_potability(ph, Hardness, Solids, Chloramines, Sulfate, Conductivity, Organic_carbon, Trihalomethanes, Turbidity)
         st.success(f'Result: {output}.')
         st.write('0 = Water is not Potable (water is not safe for human consumption)')
         st.write('1 = Water is Potable (water is safe for human consumption)')
