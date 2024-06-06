@@ -1,47 +1,42 @@
-
 import numpy as np
-import pickle
 import pandas as pd
+import joblib
 import streamlit as st 
-
 from PIL import Image
 
+# model = joblib.load('classifier.joblib')
 
-pickle_in = open("classifier.pkl","rb")
-classifier = pickle.load(pickle_in)
+image = Image.open('water.png')
+st.image(image.resize((1000, 300)))
 
-def welcome():
-    return "Welcome All"
-
-def predict_note_authentication(variance,skewness,curtosis,entropy):
-   
-    prediction=classifier.predict([[variance,skewness,curtosis,entropy]])
-    print(prediction)
+def predict_note_authentication(ph, Hardness, Solids, Chloramines, Sulfate, Conductivity, Organic_carbon, Trihalomethanes, Turbidity):
+    prediction = model.predict([[ph, Hardness, Solids, Chloramines, Sulfate, Conductivity, Organic_carbon, Trihalomethanes, Turbidity]])
     return prediction
 
-
 def main():
-    st.title("Bank Authenticator")
-    html_temp = """
-    <div style="background-color:tomato;padding:10px">
-    <h2 style="color:white;text-align:center;">Streamlit Bank Authenticator ML App </h2>
-    </div>
-    """
-    st.markdown(html_temp,unsafe_allow_html=True)
-    variance = st.text_input("Variance","Type Here")
-    skewness = st.text_input("skewness","Type Here")
-    curtosis = st.text_input("curtosis","Type Here")
-    entropy = st.text_input("entropy","Type Here")
-    result=""
-    if st.button("Predict"):
-        result=predict_note_authentication(variance,skewness,curtosis,entropy)
-    st.success('The output is {}'.format(result))
-    if st.button("About"):
-        st.text("Lets LEarn")
-        st.text("Built with Streamlit")
+    #st.title("Banknote Authentication Classifier")
+    st.title("Water Potability Web APP")
+    ph			    = st.text_input("ph", placeholder="Type Here") 
+    Hardness		= st.text_input("Hardness", placeholder="Type Here")
+    Solids			= st.text_input("Solids", placeholder="Type Here")
+    Chloramines		= st.text_input("Chloramines", placeholder="Type Here")
+    Sulfate			= st.text_input("Sulfate", placeholder="Type Here")
+    Conductivity	= st.text_input("Conductivity", placeholder="Type Here")	
+    Organic_carbon	= st.text_input("Organic_carbon", placeholder="Type Here")	
+    Trihalomethanes	= st.text_input("Trihalomethanes", placeholder="Type Here")	
+    Turbidity		= st.text_input("Turbidity", placeholder="Type Here")
 
-if __name__=='__main__':
+    if st.button("Get Prediction"):
+        output = predict_note_authentication(ph, Hardness, Solids, Chloramines, Sulfate, Conductivity, Organic_carbon, Trihalomethanes, Turbidity)
+        st.success(f'Result: {output}.')
+        st.write('0 = Water is not Potable (water is not safe for human consumption)')
+        st.write('1 = Water is Potable (water is safe for human consumption)')
+
+    if st.button("About"):
+        st.text("Classifier name : Random Forest")
+        st.text("Accuracy Score : 99.27")
+        st.text("SRM 3rd SEM Internship Project")
+        st.text("Built by Suraj R. Yadav")
+
+if __name__ == '__main__':
     main()
-    
-    
-    
