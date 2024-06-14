@@ -36,11 +36,13 @@ def main():
             st.markdown("<h3>Result :<span style='color:LawnGreen'> 1 </span></h3>", unsafe_allow_html=True)
             
         st.markdown("<h5 style='color:red'> 0<span style='color:white'> =</span> Water is Not Potable (not safe for human consumption)</h5>", unsafe_allow_html=True)
-        st.markdown("<h5 style='color:green'> 1<span  style='color:White'> =</span> Water is Potable (safe for human consumption)</h5>", unsafe_allow_html=True)
+        st.markdown("<h5 style='color:lawngreen'> 1<span  style='color:White'> =</span> Water is Potable (safe for human consumption)</h5>", unsafe_allow_html=True)
         
     if st.button("About"):
         st.text("Classifier name : Random Forest")
         st.text("Accuracy Score : 70.00")
+        st.text("Built by : Shamela K")
+
 
 if __name__ == '__main__':
     main()
