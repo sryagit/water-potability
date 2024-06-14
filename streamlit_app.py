@@ -15,9 +15,9 @@ def predict_water_potability(ph, Hardness, Solids, Chloramines, Sulfate, Conduct
 
 def main():
     st.title("Water Potability Web APP")
-    ph			    = st.text_input("ph", placeholder="Type Here") 
-    Hardness		= st.text_input("Hardness", placeholder="Type Here")
-    Solids			= st.text_input("Solids", placeholder="Type Here")
+    ph = st.text_input("ph", placeholder="Type Here") 
+    Hardness = st.text_input("Hardness", placeholder="Type Here")
+    Solids = st.text_input("Solids", placeholder="Type Here")
     Chloramines		= st.text_input("Chloramines", placeholder="Type Here")
     Sulfate			= st.text_input("Sulfate", placeholder="Type Here")
     Conductivity	= st.text_input("Conductivity", placeholder="Type Here")	
