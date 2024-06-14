@@ -9,24 +9,24 @@ model = joblib.load('classifier.joblib')
 image = Image.open('water.jpg')
 st.image(image.resize((1000, 300)))
 
-def predict_water_potability(ph, hardness, Solids, Chloramines, Sulfate, Conductivity, Organic_carbon, Trihalomethanes, Turbidity):
-    prediction = model.predict([[ph, Hardness, Solids, Chloramines, Sulfate, Conductivity, Organic_carbon, Trihalomethanes, Turbidity]])
+def predict_water_potability(ph, hardness, solids, chloramines, sulfate, conductivity, organic_carbon, trihalomethanes, turbidity):
+    prediction = model.predict([[ph, hardness, solids, chloramines, sulfate, conductivity, organic_carbon, trihalomethanes, turbidity]])
     return prediction
 
 def main():
     st.title("Water Potability Web APP")
-    ph = st.text_input("ph", placeholder="Type Here") 
-    Hardness = st.text_input("Hardness", placeholder="Type Here")
-    Solids = st.text_input("Solids", placeholder="Type Here")
-    Chloramines		= st.text_input("Chloramines", placeholder="Type Here")
-    Sulfate			= st.text_input("Sulfate", placeholder="Type Here")
-    Conductivity	= st.text_input("Conductivity", placeholder="Type Here")	
-    Organic_carbon	= st.text_input("Organic_carbon", placeholder="Type Here")	
-    Trihalomethanes	= st.text_input("Trihalomethanes", placeholder="Type Here")	
-    Turbidity		= st.text_input("Turbidity", placeholder="Type Here")
+    ph			    = st.text_input("ph", placeholder="Type Here") 
+    hardness		= st.text_input("Hardness", placeholder="Type Here")
+    solids			= st.text_input("Solids", placeholder="Type Here")
+    chloramines		= st.text_input("Chloramines", placeholder="Type Here")
+    sulfate			= st.text_input("Sulfate", placeholder="Type Here")
+    conductivity	= st.text_input("Conductivity", placeholder="Type Here")	
+    organic_carbon	= st.text_input("Organic_carbon", placeholder="Type Here")	
+    trihalomethanes	= st.text_input("Trihalomethanes", placeholder="Type Here")	
+    turbidity		= st.text_input("Turbidity", placeholder="Type Here")
 
     if st.button("Get Prediction"):
-        output = predict_water_potability(ph, Hardness, Solids, Chloramines, Sulfate, Conductivity, Organic_carbon, Trihalomethanes, Turbidity)
+        output = predict_water_potability(ph, hardness, solids, chloramines, sulfate, conductivity, organic_carbon, trihalomethanes, turbidity)
         st.session_state['prediction'] = output
 
     if 'prediction' in st.session_state:
