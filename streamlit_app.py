@@ -9,7 +9,7 @@ model = joblib.load('classifier.joblib')
 image = Image.open('water.jpg')
 st.image(image.resize((1000, 300)))
 
-def predict_water_potability(ph, Hardness, Solids, Chloramines, Sulfate, Conductivity, Organic_carbon, Trihalomethanes, Turbidity):
+def predict_water_potability(ph, hardness, Solids, Chloramines, Sulfate, Conductivity, Organic_carbon, Trihalomethanes, Turbidity):
     prediction = model.predict([[ph, Hardness, Solids, Chloramines, Sulfate, Conductivity, Organic_carbon, Trihalomethanes, Turbidity]])
     return prediction
 
