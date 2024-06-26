@@ -1,12 +1,12 @@
+import numpy as np
 import pandas as pd
 import joblib
 import streamlit as st 
 
 model = joblib.load('waterdtc2.joblib')
-input_data = [[ph, hardness, solids, chloramines, sulfate, conductivity, organic_carbon, trihalomethanes, turbidity]]
 
 def predict_water_potability(input_data):
-    prediction = model.predict([[input_data]])
+    prediction = model.predict(input_data)
     return prediction
 
 def main():
@@ -21,6 +21,7 @@ def main():
     turbidity = st.text_input("Turbidity", placeholder="Type Here")
 
     if st.button("Get Prediction"):
+        input_data = [[ph, hardness, solids, chloramines, sulfate, conductivity, organic_carbon, trihalomethanes, turbidity]]
         output = predict_water_potability(input_data)
         st.session_state['prediction'] = output
 
