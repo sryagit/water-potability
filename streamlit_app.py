@@ -4,7 +4,7 @@ import joblib
 import streamlit as st 
 from PIL import Image
 
-model = joblib.load('water-potability.joblib')
+model = joblib.load('water-potability2.joblib')
 
 image = Image.open('water.jpg')
 st.image(image.resize((1000, 300)))
