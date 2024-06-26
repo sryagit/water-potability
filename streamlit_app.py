@@ -3,7 +3,7 @@ import pandas as pd
 import joblib
 import streamlit as st 
 
-model = joblib.load('water.joblib')
+model = joblib.load('water2.joblib')
 
 def predict_water_potability(ph, hardness, solids, chloramines, sulfate, conductivity, organic_carbon, trihalomethanes, turbidity):
     prediction = model.predict([[ph, hardness, solids, chloramines, sulfate, conductivity, organic_carbon, trihalomethanes, turbidity]])
