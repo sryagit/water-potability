@@ -2,19 +2,14 @@ import numpy as np
 import pandas as pd
 import joblib
 import streamlit as st 
-from PIL import Image
 
-model = joblib.load('water-potability2.joblib')
-
-image = Image.open('water.jpg')
-st.image(image.resize((1000, 300)))
+model = joblib.load('water.joblib')
 
 def predict_water_potability(ph, hardness, solids, chloramines, sulfate, conductivity, organic_carbon, trihalomethanes, turbidity):
     prediction = model.predict([[ph, hardness, solids, chloramines, sulfate, conductivity, organic_carbon, trihalomethanes, turbidity]])
     return prediction
 
 def main():
-    st.title("Water Potability Web APP")
     ph = st.text_input("ph", placeholder="Type Here") 
     hardness = st.text_input("Hardness", placeholder="Type Here")
     solids = st.text_input("Solids", placeholder="Type Here")
@@ -31,18 +26,9 @@ def main():
 
     if 'prediction' in st.session_state:
         if st.session_state['prediction'] == 0:
-            st.markdown("<h3>Result :<span style='color:red'> 0 </span></h3>", unsafe_allow_html=True)
+            st.markdown("0", unsafe_allow_html=True)
         else:
-            st.markdown("<h3>Result :<span style='color:LawnGreen'> 1 </span></h3>", unsafe_allow_html=True)
-            
-        st.markdown("<h5 style='color:red'> 0<span style='color:white'> =</span> Water is Not Potable (not safe for human consumption)</h5>", unsafe_allow_html=True)
-        st.markdown("<h5 style='color:lawngreen'> 1<span  style='color:White'> =</span> Water is Potable (safe for human consumption)</h5>", unsafe_allow_html=True)
-        
-    if st.button("About"):
-        st.text("Classifier name : Random Forest")
-        st.text("Accuracy Score : 68.00")
-        st.text("Built by : Shamela K")
-
+            st.markdown("1", unsafe_allow_html=True)
 
 if __name__ == '__main__':
     main()
