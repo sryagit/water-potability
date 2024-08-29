@@ -41,7 +41,7 @@ def main():
     if st.button("About"):
         st.text("Classifier name : Random Forest")
         st.text("Accuracy Score : 68.00")
-        st.text("Built by : Shamela K")
+        st.text("Built by : Suraj Yadav")
 
 
 if __name__ == '__main__':
